@@ -25,12 +25,6 @@ def get_min_distance(vertices, distancia, key, previous):
 
     return vertices.get(key) if min_distance is not None and min_distance < distancia else new_val
 
-
-def dijkistra_graph(graph, source="Seattle", destiny="Miami"):
-    vertices = [{source: graph.remove(source)}]
-    visitados = {source: {"min_distance": 0.}}
-
-
 def dijkistra(cities, source, destination):
     vertices = [{source: cities.pop(source)}]
     visitados = {source: {"min_distance": 0.}}
@@ -52,8 +46,6 @@ def dijkistra(cities, source, destination):
                         visitados.update({edge: min_distancia})
                 vertices.remove(city)
 
-    # for v in visitados.items():
-
     peso_total = visitados.get(destination).get("min_distance")
     caminho = ["total: " + str(peso_total), destination]
     key = destination
@@ -65,11 +57,9 @@ def dijkistra(cities, source, destination):
         else:
             break
 
-
     caminho.reverse()
 
     return caminho
-
 
 if __name__ == '__main__':
     print " --> ".join(dijkistra(graph, "Seattle", "Wash DC"))
